@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +15,7 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
   loginForm = new FormGroup({
-    email: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl(''),
   });
 
@@ -18,5 +23,9 @@ export class LoginComponent {
     console.log(
       `email: ${this.loginForm.value.email}, password: ${this.loginForm.value.password}`
     );
+  }
+
+  get email() {
+    return this.loginForm.get('email');
   }
 }
