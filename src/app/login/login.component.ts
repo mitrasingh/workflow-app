@@ -5,13 +5,13 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterOutlet, RouterLink, SignupComponent],
+  imports: [ReactiveFormsModule, RouterLink, SignupComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
