@@ -1,1 +1,68 @@
-<p>signup works!</p>
+<div class="container">
+  <div class="left-side">
+    <h1>Workflow</h1>
+  </div>
+  <div class="right-side">
+    <div class="login-form">
+      <h2>Sign Up</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <label for="firstName">First Name</label>
+        <input
+          formControlName="firstName"
+          type="text"
+          id="firstName"
+          name="firstName"
+          placeholder="Enter your first name"
+          required
+        />
+
+        <label for="lastName">Last Name</label>
+        <input
+          formControlName="lastName"
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Enter your last name"
+          required
+        />
+        <!-- @if(email?.invalid && email?.dirty) {
+        <p class="invalid-message">Email is not valid.</p>
+        } -->
+        <label for="email">Email</label>
+        <input
+          formControlName="email"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          formControlName="confirmPassword"
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm your password"
+          required
+        />
+
+        <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+      </form>
+      <p class="login-message">
+        Already joined?<a routerLink="/login"><strong> Sign In.</strong></a>
+      </p>
+    </div>
+  </div>
+</div>
