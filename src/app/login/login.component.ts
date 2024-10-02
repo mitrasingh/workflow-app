@@ -16,15 +16,20 @@ import { SignupComponent } from '../signup/signup.component';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  submitted = false;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl(''),
+    password: new FormControl('', [Validators.required]),
   });
 
   onSubmit(): void {
-    console.log(
-      `email: ${this.loginForm.value.email}, password: ${this.loginForm.value.password}`
-    );
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    console.log(this.loginForm.value);
   }
 
   get email() {
