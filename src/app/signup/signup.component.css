@@ -33,12 +33,9 @@
 
 .login-form label {
   display: block;
+  margin-top: 20px;
   margin-bottom: 5px;
   font-size: 14px;
-}
-
-.login-form label:last-of-type {
-  margin-top: 20px;
 }
 
 .login-form input {
