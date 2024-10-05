@@ -16,11 +16,21 @@ import { RouterLink } from '@angular/router';
 })
 export class SignupComponent {
   signupForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', {
+      validators: [Validators.required],
+    }),
+    lastName: new FormControl('', {
+      validators: [Validators.required],
+    }),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+    }),
+    password: new FormControl('', {
+      validators: [Validators.required],
+    }),
+    confirmPassword: new FormControl('', {
+      validators: [Validators.required],
+    }),
   });
 
   onSubmit(): void {
