@@ -18,8 +18,12 @@ import { SignupComponent } from '../signup/signup.component';
 export class LoginComponent {
   submitted = false;
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+    }),
+    password: new FormControl('', {
+      validators: [Validators.required],
+    }),
   });
 
   onSubmit(): void {
