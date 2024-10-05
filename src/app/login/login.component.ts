@@ -30,6 +30,8 @@ export class LoginComponent {
     }
 
     console.log(this.loginForm.value);
+    this.loginForm.reset();
+    this.submitted = false;
   }
 
   get email() {
