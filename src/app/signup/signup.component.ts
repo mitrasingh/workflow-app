@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
 
 @Component({
   selector: 'app-signup',
@@ -15,23 +16,28 @@ import { RouterLink } from '@angular/router';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  signupForm = new FormGroup({
-    firstName: new FormControl('', {
-      validators: [Validators.required],
-    }),
-    lastName: new FormControl('', {
-      validators: [Validators.required],
-    }),
-    email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
-    }),
-    password: new FormControl('', {
-      validators: [Validators.required],
-    }),
-    confirmPassword: new FormControl('', {
-      validators: [Validators.required],
-    }),
-  });
+  signupForm = new FormGroup(
+    {
+      firstName: new FormControl('', {
+        validators: [Validators.required],
+      }),
+      lastName: new FormControl('', {
+        validators: [Validators.required],
+      }),
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+        validators: [Validators.required],
+      }),
+      confirmPassword: new FormControl('', {
+        validators: [Validators.required],
+      }),
+    },
+    {
+      validators: [passwordMatchValidator],
+    }
+  );
 
   onSubmit(): void {
     console.log(this.signupForm.value);
