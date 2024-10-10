@@ -38,6 +38,7 @@ export class LoginComponent {
     this.submitted = false;
   }
 
+  // Getter to access form control easier and more readable in the template
   get email() {
     return this.loginForm.get('email');
   }
