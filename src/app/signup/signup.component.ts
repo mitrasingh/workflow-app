@@ -16,6 +16,7 @@ import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
+  submitted = false;
   signupForm = new FormGroup(
     {
       firstName: new FormControl('', {
@@ -41,5 +42,11 @@ export class SignupComponent {
 
   onSubmit(): void {
     console.log(this.signupForm.value);
+    this.submitted = true;
+  }
+
+  // Getter to access form control easier and more readable in the template
+  get email() {
+    return this.signupForm.get('email');
   }
 }
