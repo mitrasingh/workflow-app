@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyCEqfjMbQrmkdMrKYpDHRld8v7-ePiVAg8',
   authDomain: 'workflow-app-40066.firebaseapp.com',
   projectId: 'workflow-app-40066',
