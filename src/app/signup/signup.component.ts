@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormControl,
@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
+import { FireAuthService } from '../services/fireauth.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,7 @@ import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
+  authService = inject(FireAuthService);
   submitted = false;
   signupForm = new FormGroup(
     {
@@ -40,13 +42,23 @@ export class SignupComponent {
     }
   );
 
-  onSubmit(): void {
-    console.log(this.signupForm.value);
-    this.submitted = true;
-  }
-
   // Getter to access form control easier and more readable in the template
   get email() {
     return this.signupForm.get('email');
+  }
+
+  onSubmit(): void {
+    const formData = this.signupForm.value;
+    console.log(formData);
+    this.authService
+      .signupUser(
+        formData.firstName!,
+        formData.lastName!,
+        formData.email!,
+        formData.password!
+      )
+      .subscribe(() => {
+        console.log('you have signed up!');
+      });
   }
 }
