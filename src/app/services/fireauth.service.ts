@@ -1,30 +1,32 @@
-import { inject, Injectable, OnDestroy } from '@angular/core';
-import { Auth, authState, User } from '@angular/fire/auth';
-import { Subscription } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { from, Observable } from 'rxjs';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FireAuthService implements OnDestroy {
-  private auth: Auth = inject(Auth);
-  authState$ = authState(this.auth);
-  authStateSubscription: Subscription;
+export class FireAuthService {
+  fireAuth = inject(Auth);
 
-  constructor() {
-    this.authStateSubscription = this.authState$.subscribe(
-      (aUser: User | null) => {
-        console.log(aUser);
-      }
+  // Sign in
+
+  // Sign up user
+  signupUser(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ): Observable<void> {
+    const promise = createUserWithEmailAndPassword(
+      this.fireAuth,
+      email,
+      password
+    ).then((reponse) =>
+      console.log(reponse.user, { displayName: firstName, lastName: lastName })
     );
+    return from(promise);
   }
 
-  ngOnDestroy() {
-    this.authStateSubscription.unsubscribe();
-  }
+  // Sign Out
 }
-
-// Sign in
-
-// Sign up user
-
-// Sign Out
