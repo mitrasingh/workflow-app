@@ -31,7 +31,7 @@ export class SignupComponent {
         validators: [Validators.required, Validators.email],
       }),
       password: new FormControl('', {
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.minLength(6)],
       }),
       confirmPassword: new FormControl('', {
         validators: [Validators.required],
