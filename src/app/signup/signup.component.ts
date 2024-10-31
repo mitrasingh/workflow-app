@@ -17,7 +17,7 @@ import { FireAuthService } from '../services/fireauth.service';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  authService = inject(FireAuthService);
+  private authService = inject(FireAuthService);
   submitted = false;
   signupForm = new FormGroup(
     {
