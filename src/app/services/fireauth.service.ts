@@ -7,7 +7,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
   providedIn: 'root',
 })
 export class FireAuthService {
-  fireAuth = inject(Auth);
+  private fireAuth = inject(Auth);
 
   // Sign in
 
