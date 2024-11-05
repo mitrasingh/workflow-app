@@ -11,9 +11,7 @@
           formControlName="firstName"
           type="text"
           id="firstName"
-          name="firstName"
           placeholder="Enter your first name"
-          required
         />
 
         <label for="lastName">Last Name</label>
@@ -21,9 +19,7 @@
           formControlName="lastName"
           type="text"
           id="lastName"
-          name="lastName"
           placeholder="Enter your last name"
-          required
         />
 
         <label for="email">Email</label>
@@ -31,9 +27,7 @@
           formControlName="email"
           type="email"
           id="email"
-          name="email"
           placeholder="Enter your email"
-          required
         />
         @if(email?.errors && submitted) {
         <p class="invalid-message">Email is not valid.</p>
@@ -44,9 +38,7 @@
           formControlName="password"
           type="password"
           id="password"
-          name="password"
           placeholder="Enter your password"
-          required
         />
 
         <label for="confirmPassword">Confirm Password</label>
@@ -54,9 +46,7 @@
           formControlName="confirmPassword"
           type="password"
           id="confirmPassword"
-          name="confirmPassword"
           placeholder="Confirm your password"
-          required
         />
         @if(signupForm.hasError('passwordMatch') && submitted) {
         <p class="invalid-message">Passwords do not match.</p>
