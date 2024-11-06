@@ -13,6 +13,7 @@
           type="text"
           id="firstName"
           placeholder="Enter your first name"
+          required
         />
         @if(firstName?.hasError('required') && submitted) {
         <p class="invalid-message">First name is required.</p>
@@ -24,6 +25,7 @@
           type="text"
           id="lastName"
           placeholder="Enter your last name"
+          required
         />
         @if(lastName?.hasError('required') && submitted) {
         <p class="invalid-message">Last name is required.</p>
@@ -35,6 +37,7 @@
           type="email"
           id="email"
           placeholder="Enter your email"
+          required
         />
         @if(email?.hasError('required') && submitted) {
         <p class="invalid-message">Email is required.</p>
@@ -48,6 +51,7 @@
           type="password"
           id="password"
           placeholder="Enter your password"
+          required
         />
         @if(password?.hasError('required') && submitted) {
         <p class="invalid-message">Password is required.</p>
@@ -63,6 +67,7 @@
           type="password"
           id="confirmPassword"
           placeholder="Confirm your password"
+          required
         />
         @if(signupForm.hasError('passwordMatch') && submitted) {
         <p class="invalid-message">Passwords do not match.</p>
