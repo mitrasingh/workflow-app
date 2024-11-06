@@ -5,6 +5,7 @@
   <div class="right-side">
     <div class="login-form">
       <h2>Sign Up</h2>
+
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <label for="firstName">First Name</label>
         <input
@@ -13,6 +14,9 @@
           id="firstName"
           placeholder="Enter your first name"
         />
+        @if(firstName?.hasError('required') && submitted) {
+        <p class="invalid-message">First name is required.</p>
+        }
 
         <label for="lastName">Last Name</label>
         <input
@@ -21,6 +25,9 @@
           id="lastName"
           placeholder="Enter your last name"
         />
+        @if(lastName?.hasError('required') && submitted) {
+        <p class="invalid-message">Last name is required.</p>
+        }
 
         <label for="email">Email</label>
         <input
@@ -29,8 +36,10 @@
           id="email"
           placeholder="Enter your email"
         />
-        @if(email?.errors && submitted) {
-        <p class="invalid-message">Email is not valid.</p>
+        @if(email?.hasError('required') && submitted) {
+        <p class="invalid-message">Email is required.</p>
+        } @if(email?.hasError('email') && submitted) {
+        <p class="invalid-message">Please enter a valid email.</p>
         }
 
         <label for="password">Password</label>
@@ -40,6 +49,13 @@
           id="password"
           placeholder="Enter your password"
         />
+        @if(password?.hasError('required') && submitted) {
+        <p class="invalid-message">Password is required.</p>
+        } @if(password?.hasError('minlength') && submitted) {
+        <p class="invalid-message">
+          Password must be at least 6 characters or more.
+        </p>
+        }
 
         <label for="confirmPassword">Confirm Password</label>
         <input
@@ -54,6 +70,8 @@
 
         <button type="submit">Sign Up</button>
       </form>
+
+      <!-- <p>Form Status: {{ signupForm.status }}</p> -->
       <p class="login-message">
         Already joined?<a routerLink="/login"><strong> Sign In.</strong></a>
       </p>
