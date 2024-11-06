@@ -8,6 +8,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
 import { FireAuthService } from '../services/fireauth.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -43,22 +44,47 @@ export class SignupComponent {
   );
 
   // Getter to access form control easier and more readable in the template
+  get firstName() {
+    return this.signupForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.signupForm.get('lastName');
+  }
+
   get email() {
     return this.signupForm.get('email');
   }
 
+  get password() {
+    return this.signupForm.get('password');
+  }
+
   onSubmit(): void {
-    const formData = this.signupForm.value;
-    console.log(formData);
-    this.authService
-      .signupUser(
-        formData.firstName!,
-        formData.lastName!,
-        formData.email!,
-        formData.password!
-      )
-      .subscribe(() => {
-        console.log('you have signed up!');
-      });
+    this.submitted = true;
+    if (this.signupForm.valid) {
+      console.log('Submitted!');
+      this.signupForm.reset();
+      this.submitted = false;
+    }
+    // const formData = this.signupForm.getRawValue();
+    // const formStatus = this.signupForm.status;
+    // if (formStatus === 'VALID') {
+    //   console.log(this.signupForm.value);
+    // } else {
+    //   console.log('Form is not valid');
+    //   this.submitted = false;
+    // }
+
+    // this.authService
+    //   .signupUser(
+    //     formData.firstName!,
+    //     formData.lastName!,
+    //     formData.email!,
+    //     formData.password!
+    //   )
+    //   .subscribe(() => {
+    //     console.log('you have signed up!');
+    //   });
   }
 }
