@@ -4,6 +4,7 @@ import {
   FormControl,
   FormGroup,
   Validators,
+  FormBuilder,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
@@ -19,29 +20,15 @@ import { User } from '../models/user.model';
 })
 export class SignupComponent {
   private authService = inject(FireAuthService);
+  fb = new FormBuilder();
   submitted = false;
-  signupForm = new FormGroup(
+  signupForm = this.fb.nonNullable.group(
     {
-      firstName: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      lastName: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      email: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required, Validators.email],
-      }),
-      password: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required, Validators.minLength(6)],
-      }),
-      confirmPassword: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
     },
     {
       validators: [passwordMatchValidator],
@@ -67,8 +54,8 @@ export class SignupComponent {
 
   onSubmit(): void {
     this.submitted = true;
-    // const formData = this.signupForm.getRawValue();
     const formData = this.signupForm.getRawValue();
+    // const formData = this.signupForm.value;
     if (this.signupForm.valid) {
       console.log(formData.firstName);
       this.authService.signupUser(
