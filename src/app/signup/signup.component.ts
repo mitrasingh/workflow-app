@@ -23,18 +23,23 @@ export class SignupComponent {
   signupForm = new FormGroup(
     {
       firstName: new FormControl('', {
+        nonNullable: true,
         validators: [Validators.required],
       }),
       lastName: new FormControl('', {
+        nonNullable: true,
         validators: [Validators.required],
       }),
       email: new FormControl('', {
+        nonNullable: true,
         validators: [Validators.required, Validators.email],
       }),
       password: new FormControl('', {
+        nonNullable: true,
         validators: [Validators.required, Validators.minLength(6)],
       }),
       confirmPassword: new FormControl('', {
+        nonNullable: true,
         validators: [Validators.required],
       }),
     },
@@ -62,12 +67,20 @@ export class SignupComponent {
 
   onSubmit(): void {
     this.submitted = true;
+    // const formData = this.signupForm.getRawValue();
+    const formData = this.signupForm.getRawValue();
     if (this.signupForm.valid) {
+      console.log(formData.firstName);
+      this.authService.signupUser(
+        formData.firstName,
+        formData.lastName,
+        formData.email,
+        formData.password
+      );
       console.log('Submitted!');
       this.signupForm.reset();
       this.submitted = false;
     }
-    // const formData = this.signupForm.getRawValue();
     // const formStatus = this.signupForm.status;
     // if (formStatus === 'VALID') {
     //   console.log(this.signupForm.value);
