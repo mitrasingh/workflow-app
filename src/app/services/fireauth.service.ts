@@ -9,10 +9,10 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 export class FireAuthService {
   private fireAuth = inject(Auth);
 
-  // Sign in
+  // Log user in
 
-  // Sign up user
-  signupUser(
+  // Register user
+  register(
     firstName: string,
     lastName: string,
     email: string,
@@ -28,5 +28,5 @@ export class FireAuthService {
     return from(promise);
   }
 
-  // Sign Out
+  // Log user out
 }
