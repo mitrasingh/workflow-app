@@ -58,7 +58,7 @@ export class SignupComponent {
     // const formData = this.signupForm.value;
     if (this.signupForm.valid) {
       console.log(formData.firstName);
-      this.authService.signupUser(
+      this.authService.register(
         formData.firstName,
         formData.lastName,
         formData.email,
