@@ -1,15 +1,8 @@
 import { Component, inject } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormControl,
-  FormGroup,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
 import { FireAuthService } from '../services/fireauth.service';
-import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-signup',
