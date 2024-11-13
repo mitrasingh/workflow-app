@@ -48,7 +48,6 @@ export class SignupComponent {
   onSubmit(): void {
     this.submitted = true;
     const formData = this.signupForm.getRawValue();
-    // const formData = this.signupForm.value;
     if (this.signupForm.valid) {
       console.log(formData.firstName);
       this.authService.register(
@@ -61,23 +60,5 @@ export class SignupComponent {
       this.signupForm.reset();
       this.submitted = false;
     }
-    // const formStatus = this.signupForm.status;
-    // if (formStatus === 'VALID') {
-    //   console.log(this.signupForm.value);
-    // } else {
-    //   console.log('Form is not valid');
-    //   this.submitted = false;
-    // }
-
-    // this.authService
-    //   .signupUser(
-    //     formData.firstName!,
-    //     formData.lastName!,
-    //     formData.email!,
-    //     formData.password!
-    //   )
-    //   .subscribe(() => {
-    //     console.log('you have signed up!');
-    //   });
   }
 }
