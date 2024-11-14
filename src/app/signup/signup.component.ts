@@ -3,11 +3,12 @@ import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { passwordMatchValidator } from '../shared/utils/passwordMatchValidator';
 import { FireAuthService } from '../services/fireauth.service';
+import { HeroComponent } from '../shared/components/hero/hero.component';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, HeroComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
