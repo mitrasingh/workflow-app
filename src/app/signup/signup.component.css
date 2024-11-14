@@ -3,16 +3,6 @@
   height: 100vh;
 }
 
-.left-side {
-  flex: 1;
-  background-color: #6c79ff;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-}
-
 .right-side {
   flex: 1;
   background-color: white;
