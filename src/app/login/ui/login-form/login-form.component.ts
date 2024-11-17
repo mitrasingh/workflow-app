@@ -4,6 +4,7 @@ import {
   FormControl,
   ReactiveFormsModule,
   Validators,
+  FormBuilder,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SignupComponent } from '../../../signup/signup.component';
@@ -19,13 +20,11 @@ import { Login } from '../../../models/login.model';
 export class LoginForm {
   submitted = false;
   loginSubmitted = output<Login>();
-  loginForm = new FormGroup({
-    email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
-    }),
-    password: new FormControl('', {
-      validators: [Validators.required],
-    }),
+  fb = new FormBuilder();
+
+  loginForm = this.fb.nonNullable.group({
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required],
   });
 
   onSubmit(): void {
