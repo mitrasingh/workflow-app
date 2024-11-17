@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SignupComponent } from '../../../signup/signup.component';
+import { Login } from '../../../models/login.model';
 
 @Component({
   selector: 'app-login-form',
@@ -17,6 +18,7 @@ import { SignupComponent } from '../../../signup/signup.component';
 })
 export class LoginForm {
   submitted = false;
+  loginSubmitted = output<Login>();
   loginForm = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
