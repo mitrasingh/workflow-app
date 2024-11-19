@@ -2,7 +2,10 @@
   <div class="right-side">
     <div class="login-form">
       <h2>Welcome</h2>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="loginSubmitted.emit(loginForm.getRawValue())"
+      >
         <label for="email">Email</label>
         <input
           formControlName="email"
@@ -12,7 +15,7 @@
           placeholder="Enter your email"
           required
         />
-        @if(email?.errors && submitted) {
+        @if(email?.errors && submitStatus) {
         <p class="invalid-message">Email is not valid.</p>
         }
 
