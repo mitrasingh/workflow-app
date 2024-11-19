@@ -11,7 +11,6 @@ import { Login } from '../../../models/login.model';
   styleUrl: './login-form.component.css',
 })
 export class LoginForm {
-  submitStatus = false;
   loginSubmitted = output<Login>();
   fb = new FormBuilder();
 
