@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -18,24 +18,24 @@ import { Login } from '../../../models/login.model';
   styleUrl: './login-form.component.css',
 })
 export class LoginForm {
-  submitted = false;
+  submitStatus = false;
   loginSubmitted = output<Login>();
   fb = new FormBuilder();
 
   loginForm = this.fb.nonNullable.group({
-    email: ['', Validators.required, Validators.email],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
-    }
-    console.log(this.loginForm.value);
-    this.loginForm.reset();
-    this.submitted = false;
-  }
+  // onSubmit(): void {
+  //   this.submitted = true;
+  //   if (this.loginForm.invalid) {
+  //     return;
+  //   }
+  //   console.log(this.loginForm.value);
+  //   this.loginForm.reset();
+  //   this.submitted = false;
+  // }
 
   // Getter to access form control easier and more readable in the template
   get email() {
