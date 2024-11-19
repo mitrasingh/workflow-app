@@ -15,7 +15,7 @@
           placeholder="Enter your email"
           required
         />
-        @if(email?.errors && submitStatus) {
+        @if(email?.touched && email?.invalid) {
         <p class="invalid-message">Email is not valid.</p>
         }
 
@@ -29,7 +29,7 @@
           required
         />
 
-        <button type="submit">Login</button>
+        <button [disabled]="!loginForm.valid" type="submit">Login</button>
       </form>
       <p class="signup-message">
         Don't have an account?<a routerLink="/signup"
