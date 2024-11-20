@@ -1,12 +1,12 @@
 import { Component, output } from '@angular/core';
 import { Signup } from '../../../models/signup.model';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../../../shared/utils/passwordMatchValidator';
 
 @Component({
   selector: 'app-signup-form',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './signup-form.component.html',
   styleUrl: './signup-form.component.css',
 })
