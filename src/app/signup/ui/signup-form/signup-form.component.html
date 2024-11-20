@@ -3,7 +3,10 @@
     <div class="login-form">
       <h2>Sign Up</h2>
 
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="formData.emit(signupForm.getRawValue())"
+      >
         <label for="firstName">First Name</label>
         <input
           formControlName="firstName"
@@ -12,7 +15,7 @@
           placeholder="Enter your first name"
           required
         />
-        @if(firstName?.hasError('required') && submitted) {
+        @if(firstName?.touched && firstName?.invalid) {
         <p class="invalid-message">First name is required.</p>
         }
 
@@ -24,7 +27,7 @@
           placeholder="Enter your last name"
           required
         />
-        @if(lastName?.hasError('required') && submitted) {
+        @if(lastName?.touched && lastName?.invalid) {
         <p class="invalid-message">Last name is required.</p>
         }
 
@@ -36,9 +39,9 @@
           placeholder="Enter your email"
           required
         />
-        @if(email?.hasError('required') && submitted) {
+        @if(email?.hasError('required') && email?.touched) {
         <p class="invalid-message">Email is required.</p>
-        } @if(email?.hasError('email') && submitted) {
+        } @if(email?.hasError('email') && email?.touched) {
         <p class="invalid-message">Please enter a valid email.</p>
         }
 
@@ -50,9 +53,9 @@
           placeholder="Enter your password"
           required
         />
-        @if(password?.hasError('required') && submitted) {
+        @if(password?.hasError('required') && password?.touched) {
         <p class="invalid-message">Password is required.</p>
-        } @if(password?.hasError('minlength') && submitted) {
+        } @if(password?.hasError('minlength') && password?.touched) {
         <p class="invalid-message">
           Password must be at least 6 characters or more.
         </p>
@@ -66,7 +69,7 @@
           placeholder="Confirm your password"
           required
         />
-        @if(signupForm.hasError('passwordMatch') && submitted) {
+        @if(signupForm.hasError('passwordMatch')) {
         <p class="invalid-message">Passwords do not match.</p>
         }
 
