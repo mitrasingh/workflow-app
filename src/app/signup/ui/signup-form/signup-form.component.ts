@@ -41,4 +41,8 @@ export class SignupForm {
   get password() {
     return this.signupForm.get('password');
   }
+
+  onSubmit(): void {
+    console.log(this.formData);
+  }
 }
