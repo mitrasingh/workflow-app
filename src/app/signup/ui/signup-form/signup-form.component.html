@@ -3,10 +3,7 @@
     <div class="form">
       <h2>Sign Up</h2>
 
-      <form
-        [formGroup]="signupForm"
-        (ngSubmit)="formData.emit(signupForm.getRawValue())"
-      >
+      <form [formGroup]="signupForm" (ngSubmit)="emitData()">
         <label for="firstName">First Name</label>
         <input
           formControlName="firstName"
@@ -15,7 +12,7 @@
           placeholder="Enter your first name"
           required
         />
-        @if(firstName?.touched && firstName?.invalid) {
+        @if(firstName?.errors && isSubmitted) {
         <p class="invalid-message">First name is required.</p>
         }
 
@@ -27,7 +24,7 @@
           placeholder="Enter your last name"
           required
         />
-        @if(lastName?.touched && lastName?.invalid) {
+        @if(lastName?.errors && isSubmitted) {
         <p class="invalid-message">Last name is required.</p>
         }
 
@@ -39,9 +36,9 @@
           placeholder="Enter your email"
           required
         />
-        @if(email?.hasError('required') && email?.touched) {
+        @if(email?.hasError('required') && isSubmitted) {
         <p class="invalid-message">Email is required.</p>
-        } @if(email?.hasError('email') && email?.touched) {
+        } @if(email?.hasError('email') && isSubmitted) {
         <p class="invalid-message">Please enter a valid email.</p>
         }
 
@@ -53,9 +50,9 @@
           placeholder="Enter your password"
           required
         />
-        @if(password?.hasError('required') && password?.touched) {
+        @if(password?.hasError('required') && isSubmitted) {
         <p class="invalid-message">Password is required.</p>
-        } @if(password?.hasError('minlength') && password?.touched) {
+        } @if(password?.hasError('minlength') && isSubmitted) {
         <p class="invalid-message">
           Password must be at least 6 characters or more.
         </p>
@@ -69,11 +66,11 @@
           placeholder="Confirm your password"
           required
         />
-        @if(signupForm.hasError('passwordMatch') && confirmPassword?.touched) {
+        @if(signupForm.hasError('passwordMatch') && isSubmitted) {
         <p class="invalid-message">Passwords do not match.</p>
         }
 
-        <button [disabled]="!signupForm.valid" type="submit">Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
 
       <p class="signup-message">
