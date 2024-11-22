@@ -13,6 +13,7 @@ import { RouterLink } from '@angular/router';
 })
 export class SignupForm {
   formData = output<Signup>();
+  isSubmitted = false;
   fb = new FormBuilder();
 
   signupForm = this.fb.nonNullable.group(
@@ -45,5 +46,14 @@ export class SignupForm {
 
   get confirmPassword() {
     return this.signupForm.get('confirmPassword');
+  }
+
+  emitData(): void {
+    this.isSubmitted = true;
+    if (this.signupForm.valid) {
+      this.formData.emit(this.signupForm.getRawValue());
+    } else {
+      return console.log('error');
+    }
   }
 }
