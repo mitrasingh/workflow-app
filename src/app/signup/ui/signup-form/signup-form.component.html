@@ -69,7 +69,7 @@
           placeholder="Confirm your password"
           required
         />
-        @if(signupForm.hasError('passwordMatch')) {
+        @if(signupForm.hasError('passwordMatch') && confirmPassword?.touched) {
         <p class="invalid-message">Passwords do not match.</p>
         }
 
