@@ -42,4 +42,8 @@ export class SignupForm {
   get password() {
     return this.signupForm.get('password');
   }
+
+  get confirmPassword() {
+    return this.signupForm.get('confirmPassword');
+  }
 }
