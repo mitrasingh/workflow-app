@@ -15,9 +15,9 @@
           placeholder="Enter your email"
           required
         />
-        @if(email?.hasError('required') && email?.touched) {
+        @if(email?.hasError('required') && isSubmitted) {
         <p class="invalid-message">Email is required.</p>
-        } @if(email?.hasError('email') && email?.touched) {
+        } @if(email?.hasError('email') && isSubmitted) {
         <p class="invalid-message">Please enter a valid email.</p>
         }
 
