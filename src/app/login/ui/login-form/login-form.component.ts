@@ -24,4 +24,13 @@ export class LoginForm {
   get email() {
     return this.loginForm.get('email');
   }
+
+  emitData(): void {
+    this.isSubmitted = true;
+    if (this.loginForm.valid) {
+      this.formData.emit(this.loginForm.getRawValue());
+    } else {
+      return console.log('error');
+    }
+  }
 }
