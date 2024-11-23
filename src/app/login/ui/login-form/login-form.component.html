@@ -4,7 +4,7 @@
       <h2>Welcome</h2>
       <form
         [formGroup]="loginForm"
-        (ngSubmit)="loginSubmitted.emit(loginForm.getRawValue())"
+        (ngSubmit)="formData.emit(loginForm.getRawValue())"
       >
         <label for="email">Email</label>
         <input
