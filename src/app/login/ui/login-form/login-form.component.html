@@ -2,10 +2,7 @@
   <div class="right-side">
     <div class="form">
       <h2>Welcome</h2>
-      <form
-        [formGroup]="loginForm"
-        (ngSubmit)="formData.emit(loginForm.getRawValue())"
-      >
+      <form [formGroup]="loginForm" (ngSubmit)="emitData()">
         <label for="email">Email</label>
         <input
           formControlName="email"
