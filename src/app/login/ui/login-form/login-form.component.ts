@@ -12,6 +12,7 @@ import { Login } from '../../../models/login.model';
 })
 export class LoginForm {
   formData = output<Login>();
+  isSubmitted = false;
   fb = new FormBuilder();
 
   loginForm = this.fb.nonNullable.group({
