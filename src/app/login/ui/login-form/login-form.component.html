@@ -27,6 +27,11 @@
           placeholder="Enter your password"
           required
         />
+        @if(password?.hasError('required') && isSubmitted) {
+        <p class="invalid-message">Password is required.</p>
+        } @if(password?.hasError('minlength') && isSubmitted) {
+        <p class="invalid-message">Password should be 6 characters or more.</p>
+        }
 
         <button type="submit">Login</button>
       </form>
