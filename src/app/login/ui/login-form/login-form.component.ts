@@ -11,7 +11,7 @@ import { Login } from '../../../models/login.model';
   styleUrl: './login-form.component.css',
 })
 export class LoginForm {
-  loginSubmitted = output<Login>();
+  formData = output<Login>();
   fb = new FormBuilder();
 
   loginForm = this.fb.nonNullable.group({
