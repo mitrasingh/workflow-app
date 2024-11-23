@@ -25,6 +25,10 @@ export class LoginForm {
     return this.loginForm.get('email');
   }
 
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   emitData(): void {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
